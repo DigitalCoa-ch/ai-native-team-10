@@ -1,6 +1,9 @@
 {
-  "buildCommand": "cd soloops-ai && npm install && npm run build",
-  "outputDirectory": "soloops-ai/.next",
-  "installCommand": "cd soloops-ai && npm install",
-  "framework": "nextjs"
+  "buildCommand": "echo 'No build needed - static HTML'",
+  "outputDirectory": "soloops-ai/public",
+  "installCommand": "echo 'No install needed'",
+  "framework": "static",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
 }
