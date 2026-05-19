@@ -1,6 +1,0 @@
-{
-  "buildCommand": "cd soloops-ai && npm install && npm run build",
-  "outputDirectory": "soloops-ai/.next",
-  "installCommand": "cd soloops-ai && npm install",
-  "framework": "nextjs"
-}
