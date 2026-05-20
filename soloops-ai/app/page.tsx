@@ -1,292 +1,351 @@
-import type { Metadata } from "next";
-import "./globals.css";
-
-export const metadata: Metadata = { title: "SoloFlow AI | Automate the Chaos. Reclaim Your Time.", description: "The all-in-one AI assistant built for solo entrepreneurs, freelancers, coaches, and consultants." };
-
-const painPoints = [
-  { icon: "schedule", title: "Hours Lost to Scheduling", desc: "Back-and-forth emails eating up your day just to find a meeting time that works.", stat: "14 hrs/week" },
-  { icon: "mark_email_unread", title: "Forgotten Follow-ups", desc: "Leads go cold because you cannot track every conversation and reminder.", stat: "40% revenue leak" },
-  { icon: "receipt_long", title: "Invoicing Drag", desc: "Creating invoices, chasing payments, and managing finances eats into actual billable work.", stat: "5+ hrs/week" },
-  { icon: "task_alt", title: "Scattered Tasks", desc: "Notes in Notion, reminders in phone, ideas in Slack - nothing talks to each other.", stat: "3+ tools avg" },
-];
-
-const features = [
-  { icon: "calendar_month", title: "Smart Scheduling", desc: "Share your link. Clients book instantly. Auto time-zone detection. Reminders sent automatically.", highlight: "Book 3x more calls" },
-  { icon: "auto_awesome", title: "AI Follow-up Engine", desc: "Never miss a lead. Auto-generate personalized follow-up emails and WhatsApp messages at the right moment.", highlight: "2x response rate" },
-  { icon: "description", title: "Instant Invoicing", desc: "Generate professional invoices in seconds. Accept online payments. Get paid faster with automated reminders.", highlight: "Get paid 60% faster" },
-  { icon: "inbox", title: "Unified Inbox", desc: "Every email, WhatsApp, and message in one place. AI drafts replies. You approve. Done.", highlight: "Zero context switching" },
-  { icon: "notifications_active", title: "Smart Reminders", desc: "Context-aware reminders that know your schedule, your clients, and your priorities - without you configuring anything.", highlight: "95% task completion" },
-  { icon: "analytics", title: "Revenue Insights", desc: "See where your time is actually going. Track billable hours, project profit, and growth trends in one view.", highlight: "Know your numbers" },
-];
-
-const testimonials = [
-  { quote: "I went from 20 hours a week on admin work to maybe 3. SoloFlow basically runs my operations now.", name: "Priya Sharma", role: "Brand Strategist and Coach" },
-  { quote: "The AI follow-up feature alone has brought me 12k in renewed contracts this quarter. Its ridiculous.", name: "Marcus Webb", role: "Freelance UX Designer" },
-  { quote: "I used to miss half my follow-ups. Now my conversion rate is through the roof because nothing falls through.", name: "Elena Torres", role: "Executive Coach" },
-];
-
-const plans = [
-  { name: "Starter", price: "/usr/bin/sh", period: "forever", desc: "For solopreneurs just getting started.", features: ["5 Clients", "20 Invoices/mo", "Basic Scheduling", "Email Support"], cta: "Start Free", featured: false },
-  { name: "Pro", price: "9", period: "/month", desc: "For established coaches and consultants.", features: ["Unlimited Clients", "Unlimited Invoices", "AI Follow-up Engine", "Unified Inbox", "Smart Reminders", "Priority Support"], cta: "Start 14-Day Trial", featured: true },
-  { name: "Scale", price: "9", period: "/month", desc: "For serious operators ready to systematize.", features: ["Everything in Pro", "Revenue Analytics", "Custom Workflows", "White-glove Onboarding", "Dedicated Account Manager"], cta: "Talk to Us", featured: false },
-];
+import './globals.css';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-[#faf8ff] text-[#131b2e] font-sans antialiased overflow-x-hidden">
-      <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-[30px] border-b border-black/5 shadow-sm h-20">
-        <div className="max-w-7xl mx-auto px-4 md:px-6 h-full flex items-center justify-between">
+    <div className="min-h-screen bg-[#090910] text-[#e8e9f0] font-sans antialiased overflow-x-hidden">
+
+      {/* NAV */}
+      <nav className="fixed top-0 w-full z-50 glass-dark border-b border-white/5">
+        <div className="max-w-7xl mx-auto px-4 md:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-3xl text-[#004ac6] material-symbols-outlined">blur_on</span>
-            <span className="text-2xl font-extrabold tracking-tight text-[#004ac6]">SoloFlow AI</span>
+            <span className="text-2xl text-[#3b82f6] material-symbols-outlined">blur_on</span>
+            <span className="text-xl font-extrabold tracking-tight text-white">SoloOps <span className="text-[#8b5cf6]">AI</span></span>
           </div>
-          <div className="hidden md:flex items-center gap-10">
-            <a className="text-[#434655] font-semibold hover:text-[#004ac6] transition-colors pb-0.5" href="#features">Features</a>
-            <a className="text-[#434655] font-semibold hover:text-[#004ac6] transition-colors pb-0.5" href="#pricing">Pricing</a>
-            <a className="text-[#434655] font-semibold hover:text-[#004ac6] transition-colors pb-0.5" href="#testimonials">Testimonials</a>
+          <div className="hidden md:flex items-center gap-8">
+            <a className="text-[#9899b0] hover:text-white transition-colors text-sm font-medium" href="#problem">Problem</a>
+            <a className="text-[#9899b0] hover:text-white transition-colors text-sm font-medium" href="#solution">Solution</a>
+            <a className="text-[#9899b0] hover:text-white transition-colors text-sm font-medium" href="#how">How It Works</a>
+            <a className="text-[#9899b0] hover:text-white transition-colors text-sm font-medium" href="#pricing">Pricing</a>
           </div>
-          <div className="flex items-center gap-4">
-            <button className="hidden sm:block text-[#434655] font-semibold hover:text-[#004ac6] transition-colors">Sign In</button>
-            <button className="bg-[#004ac6] text-white px-6 py-2.5 rounded-full font-semibold shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98] transition-all">Get Started Free</button>
-          </div>
+          <button className="bg-gradient-to-r from-[#3b82f6] to-[#8b5cf6] text-white px-5 py-2 rounded-full text-sm font-bold shadow-lg shadow-[#3b82f6]/20">Get Started</button>
         </div>
       </nav>
 
-      <section className="relative pt-32 pb-20 overflow-hidden min-h-screen flex flex-col justify-center">
-        <div className="absolute top-1/4 -right-1/4 w-[600px] h-[600px] bg-[#004ac6]/10 rounded-full blur-[120px] animate-pulse-glow" />
-        <div className="absolute bottom-1/4 -left-1/4 w-[500px] h-[500px] bg-[#00569c]/10 rounded-full blur-[100px] animate-pulse-glow-slow" />
-        <div className="max-w-7xl mx-auto px-4 md:px-6 text-center relative z-10">
-          <div className="inline-flex items-center gap-2 bg-[#004ac6]/10 border border-[#004ac6]/20 px-4 py-1.5 rounded-full mb-6">
-            <span className="text-[#004ac6] material-symbols-outlined text-lg">auto_awesome</span>
-            <span className="text-[#004ac6] text-xs font-bold uppercase tracking-widest">Built for One Person Operations</span>
-          </div>
-          <h1 className="text-5xl md:text-7xl font-extrabold max-w-4xl mx-auto mb-6 leading-[1.1] tracking-tight">
-            Automate the chaos.<br />
-            <span className="bg-gradient-to-r from-[#004ac6] to-[#00569c] bg-clip-text text-transparent">Reclaim your time.</span>
-          </h1>
-          <p className="text-[#434655] text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed">
-            You did not start a business to manage spreadsheets, send reminder emails, and chase invoice payments. SoloFlow AI handles all the repetitive operational work - so you can focus on the work only you can do.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4 mb-16">
-            <button className="bg-[#004ac6] text-white px-10 py-4 rounded-full font-bold shadow-xl shadow-[#004ac6]/20 hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all">Start Free - No Credit Card</button>
-            <button className="bg-white border-2 border-[#004ac6] text-[#004ac6] px-10 py-4 rounded-full font-bold hover:bg-[#004ac6]/5 transition-all">Watch 2-Min Demo</button>
-          </div>
-          <div className="flex flex-wrap justify-center gap-8 text-sm text-[#434655]">
-            {["No credit card required", "14-day free trial", "Cancel anytime"].map((item) => (
-              <span key={item} className="flex items-center gap-2">
-                <span className="text-[#004ac6] material-symbols-outlined text-lg">check_circle</span>
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="py-20 bg-white border-y border-[#c3c6d7]/20">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
-            <p className="text-[#004ac6] text-sm font-bold uppercase tracking-widest mb-3">The Problem</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#131b2e]">You are losing 20+ hours a week to work that does not scale</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {painPoints.map((p) => (
-              <div key={p.title} className="p-6 bg-[#faf8ff] border border-[#c3c6d7]/20 rounded-2xl">
-                <span className="text-3xl mb-4 block material-symbols-outlined text-[#004ac6]">{p.icon}</span>
-                <div className="text-2xl font-extrabold text-[#004ac6] mb-1">{p.stat}</div>
-                <h3 className="text-lg font-bold text-[#131b2e] mb-2">{p.title}</h3>
-                <p className="text-sm text-[#434655]">{p.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section id="features" className="py-20 bg-[#f2f3ff]/30">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
-            <p className="text-[#004ac6] text-sm font-bold uppercase tracking-widest mb-3">The Solution</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#131b2e] mb-3">Everything you need to run your business - in one place</h2>
-            <p className="text-[#434655] max-w-xl mx-auto">No more juggling 5 different apps. SoloFlow replaces scheduling tools, CRM, invoicing, and reminders with one AI-powered system built for solo operators.</p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((f) => (
-              <div key={f.title} className="p-8 bg-white/80 backdrop-blur-md border border-white/40 rounded-3xl shadow-md hover:-translate-y-1 hover:shadow-lg transition-all group">
-                <div className="w-14 h-14 bg-[#004ac6]/10 rounded-2xl flex items-center justify-center mb-5 group-hover:scale-110 transition-transform">
-                  <span className="text-2xl material-symbols-outlined text-[#004ac6]">{f.icon}</span>
-                </div>
-                <h4 className="text-xl font-bold mb-2 text-[#131b2e]">{f.title}</h4>
-                <p className="text-[#434655] mb-4 text-sm leading-relaxed">{f.desc}</p>
-                <div className="inline-flex items-center gap-1.5 bg-[#004ac6]/10 text-[#004ac6] text-xs font-bold px-3 py-1.5 rounded-full">
-                  <span className="material-symbols-outlined text-sm">trending_up</span>
-                  {f.highlight}
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-[#131b2e]">Up and running in 5 minutes</h2>
-          <div className="relative">
-            <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-gradient-to-r from-[#004ac6]/10 via-[#004ac6]/40 to-[#004ac6]/10 -translate-y-1/2 -z-10" />
-            <div className="grid md:grid-cols-3 gap-12">
-              {[
-                { num: "01", title: "Connect Your Tools", desc: "Link your calendar, email, WhatsApp, and Stripe in one click. No coding. No configuration headaches.", icon: "link" },
-                { num: "02", title: "AI Learns Your Workflow", desc: "SoloFlow analyzes how you work - your clients, your pricing, your availability - and builds your personalized ops system.", icon: "psychology" },
-                { num: "03", title: "Run Your Business on Auto", desc: "Reminders fire. Invoices go out. Follow-ups send. You stay in control but stop doing the busywork.", icon: "rocket_launch" },
-              ].map((step) => (
-                <div key={step.num} className="text-center group">
-                  <div className="w-16 h-16 bg-white shadow-xl rounded-full mx-auto flex items-center justify-center mb-5 border-4 border-[#f2f3ff] transition-all group-hover:border-[#004ac6]">
-                    <span className="text-2xl material-symbols-outlined text-[#004ac6]">{step.icon}</span>
-                  </div>
-                  <div className="text-4xl font-extrabold text-[#004ac6]/20 mb-2">{step.num}</div>
-                  <h4 className="text-xl font-bold mb-2 text-[#131b2e]">{step.title}</h4>
-                  <p className="text-[#434655]">{step.desc}</p>
-                </div>
+      {/* HERO */}
+      <section className="relative pt-32 pb-20 min-h-screen flex flex-col justify-center overflow-hidden grid-bg">
+        <div className="absolute top-20 right-[-100px] w-[500px] h-[500px] bg-[#3b82f6]/15 rounded-full blur-[120px] animate-pulse-glow" />
+        <div className="absolute bottom-20 left-[-100px] w-[500px] h-[500px] bg-[#8b5cf6]/10 rounded-full blur-[120px] animate-pulse-glow" style={{animationDelay:"3s"}} />
+        <div className="max-w-7xl mx-auto px-4 md:px-8 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="inline-flex items-center gap-2 bg-[#3b82f6]/10 border border-[#3b82f6]/20 px-4 py-1.5 rounded-full mb-8 animate-fade-in-up" style={{animationDelay:"0.05s",opacity:0}}>
+              <span className="text-[#3b82f6] material-symbols-outlined text-base">auto_awesome</span>
+              <span className="text-[#3b82f6] text-xs font-bold uppercase tracking-widest">AI-Powered Micro-Operations</span>
+            </div>
+            <h1 className="text-5xl md:text-7xl font-black max-w-4xl mx-auto mb-6 leading-[1.05] tracking-tight animate-fade-in-up" style={{animationDelay:"0.1s",opacity:0}}>
+              Run a Six-Figure Solo Business. <span className="gradient-text">Let AI Handle the Rest.</span>
+            </h1>
+            <p className="text-[#9899b0] text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed animate-fade-in-up" style={{animationDelay:"0.2s",opacity:0}}>
+              SoloOps AI acts as your autonomous virtual COO -- handling scheduling, follow-ups, reminders, invoicing, and client comms so you can focus on revenue-generating work.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4 mb-10 animate-fade-in-up" style={{animationDelay:"0.3s",opacity:0}}>
+              <button className="bg-gradient-to-r from-[#3b82f6] to-[#8b5cf6] text-white px-8 py-4 rounded-full font-bold shadow-xl shadow-[#3b82f6]/25 hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all text-base">Deploy Your Agent</button>
+              <button className="glass border border-white/10 text-[#e8e9f0] px-8 py-4 rounded-full font-bold hover:bg-white/5 transition-all text-base flex items-center justify-center gap-2">
+                <span className="material-symbols-outlined text-lg">play_circle</span> Watch 1-Min Demo
+              </button>
+            </div>
+            <div className="flex flex-wrap justify-center gap-6 text-sm text-[#6b6c80] animate-fade-in-up" style={{animationDelay:"0.4s",opacity:0}}>
+              {["No credit card required","14-day free trial","Cancel anytime"].map((t) => (
+                <span key={t} className="flex items-center gap-1.5"><span className="text-[#3bf5d4] material-symbols-outlined text-base">check_circle</span>{t}</span>
               ))}
+            </div>
+          </div>
+
+          <div className="max-w-3xl mx-auto mt-16 animate-terminal">
+            <div className="terminal-window rounded-2xl overflow-hidden">
+              <div className="flex items-center gap-2 px-5 py-3 border-b border-white/5 bg-[#12122a]">
+                <div className="w-3 h-3 rounded-full bg-[#ff5f57]" /><div className="w-3 h-3 rounded-full bg-[#ffbd2e]" /><div className="w-3 h-3 rounded-full bg-[#28ca41]" />
+                <span className="text-[#6b6c80] text-xs ml-3 font-mono">soloops -- micro-operations-agent</span>
+              </div>
+              <div className="p-6 font-mono text-sm space-y-4">
+                <div className="flex gap-3"><span className="text-[#8b5cf6]">$</span><p className="text-[#9899b0]">Follow up with John about the proposal and send the invoice</p></div>
+                <div className="flex gap-3 animate-slide-in" style={{animationDelay:"0.6s"}}>
+                  <span className="text-[#3bf5d4]">[ok]</span>
+                  <div><p className="text-[#e8e9f0]">Done -- 3 tasks completed:</p>
+                    <ul className="mt-2 space-y-1 text-[#9899b0] ml-4">
+                      <li>  -&gt; Email sent to John (follow-up + proposal)</li>
+                      <li>  -&gt; Invoice #0482 generated and emailed</li>
+                      <li>  -&gt; Reminder set for 3 days if unpaid</li>
+                    </ul>
+                  </div>
+                </div>
+                <div className="flex gap-3 animate-slide-in" style={{animationDelay:"1s"}}><span className="text-[#3b82f6]">$</span><p className="text-[#3b82f6]">Plan my week around client calls and deep work blocks</p></div>
+                <div className="flex gap-3 animate-slide-in" style={{animationDelay:"1.6s"}}><span className="text-[#3b82f6]">$</span><p className="text-[#3b82f6] animate-blink">_</p></div>
+              </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="py-20 bg-[#131b2e] text-white">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="text-[#60a5fa] text-sm font-bold uppercase tracking-widest mb-3">Who It is For</p>
-              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Built for the solo operator</h2>
-              <p className="text-white/70 text-lg mb-6">You do not have an operations team. You do not have a VA. You have yourself - and that is exactly who SoloFlow is designed for.</p>
+      {/* TARGET AUDIENCE */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-12">
+            <p className="text-[#8b5cf6] text-xs font-bold uppercase tracking-widest mb-3">Built For</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">One person. Infinite scale.</h2>
+            <p className="text-[#6b6c80] max-w-lg mx-auto">SoloOps AI was designed for solo operators who want enterprise-grade operations without the team.</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+            {[{icon:"person",label:"Solo Entrepreneurs"},{icon:"brush",label:"Freelancers"},{icon:"psychology",label:"Coaches"},{icon:"workspace_premium",label:"Consultants"},{icon:"videocam",label:"Creators"},{icon:"storefront",label:"One-Person Biz"}].map((item) => (
+              <div key={item.label} className="glass rounded-xl p-5 text-center hover:bg-white/[0.06] transition-all cursor-default">
+                <span className="text-3xl mb-3 block material-symbols-outlined text-[#3b82f6]">{item.icon}</span>
+                <p className="text-sm font-medium text-[#c8c9e0]">{item.label}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* PROBLEM */}
+      <section id="problem" className="py-20 bg-[#0d0d1a]">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-14">
+            <p className="text-[#ef4444] text-xs font-bold uppercase tracking-widest mb-3">The Problem</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">You are losing 20+ hours a week to work that doesnt scale</h2>
+            <p className="text-[#6b6c80] max-w-xl mx-auto">The average solo founder spends nearly half their week on admin tasks instead of growing the business.</p>
+          </div>
+          <div className="grid md:grid-cols-4 gap-5">
+            {[ {stat:"14 hrs/wk",title:"Lost to Scheduling",desc:"Endless back-and-forth emails just to find a meeting time.",icon:"schedule"},
+              {stat:"40%",title:"Revenue Left on Table",desc:"Missed follow-ups mean cold leads and lost contracts.",icon:"trending_down"},
+              {stat:"5+ hrs/wk",title:"Wasted on Invoicing",desc:"Creating invoices, chasing payments, managing finances.",icon:"receipt_long"},
+              {stat:"3+ tools",title:"Fragmented Stack",desc:"Notes in Notion, reminders in phone, emails in Gmail -- nothing connects.",icon:"hub"},
+            ].map((p) => (
+              <div key={p.title} className="bg-[#1a0a0a] border border-[#ef4444]/20 rounded-2xl p-6 hover:border-[#ef4444]/40 transition-all">
+                <span className="text-3xl mb-3 block material-symbols-outlined text-[#ef4444]">{p.icon}</span>
+                <div className="text-3xl font-black text-[#ef4444] mb-1">{p.stat}</div>
+                <h3 className="text-white font-bold mb-2">{p.title}</h3>
+                <p className="text-[#6b6c80] text-sm">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* BEFORE VS AFTER */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-14">
+            <p className="text-[#3bf5d4] text-xs font-bold uppercase tracking-widest mb-3">The Transformation</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Before SoloOps AI vs. After</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <div className="before-card rounded-2xl p-8">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 rounded-full bg-[#ef4444]/20 flex items-center justify-center"><span className="text-[#ef4444] text-sm material-symbols-outlined">close</span></div>
+                <h3 className="text-xl font-bold text-[#fca5a5]">Before SoloOps AI</h3>
+              </div>
               <ul className="space-y-3">
-                {["Coaches and consultants managing their own clients", "Freelancers juggling multiple projects and deadlines", "Creators monetizing their audience without a team", "Agency owners of one running everything solo"].map((item) => (
-                  <li key={item} className="flex items-start gap-3 text-white/80">
-                    <span className="text-[#60a5fa] material-symbols-outlined text-xl mt-0.5">check_circle</span>
-                    <span>{item}</span>
-                  </li>
+                {["20+ tabs open across 5+ apps","Follow-up emails sent manually (and forgotten)","Invoices chased with awkward reminders","Schedule managed with endless back-and-forth","Client notes scattered across 4+ apps","Reminders set manually, easily missed"].map((t) => (
+                  <li key={t} className="flex items-start gap-3 text-[#6b6c80] text-sm"><span className="text-[#ef4444] mt-0.5 material-symbols-outlined text-base">remove</span>{t}</li>
                 ))}
               </ul>
             </div>
-            <div className="bg-gradient-to-br from-[#004ac6]/20 to-[#00569c]/20 rounded-3xl p-8 border border-white/10">
-              <div className="text-center mb-6">
-                <span className="text-5xl font-extrabold text-white">20+</span>
-                <div className="text-white/60 text-sm font-bold uppercase tracking-widest mt-1">Hours saved per week</div>
+            <div className="after-card rounded-2xl p-8 glow-border">
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-8 rounded-full bg-[#3bf5d4]/20 flex items-center justify-center"><span className="text-[#3bf5d4] text-sm material-symbols-outlined">check</span></div>
+                <h3 className="text-xl font-bold text-[#3bf5d4]">After SoloOps AI</h3>
               </div>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { label: "Scheduling", value: "100%" },
-                  { label: "Follow-up Rate", value: "3x" },
-                  { label: "Invoice Collection", value: "+60%" },
-                  { label: "Task Completion", value: "95%" },
-                ].map((s) => (
-                  <div key={s.label} className="text-center">
-                    <div className="text-xl font-bold text-white">{s.value}</div>
-                    <div className="text-white/50 text-xs">{s.label}</div>
-                  </div>
+              <ul className="space-y-3">
+                {["One unified AI dashboard","AI sends personalized follow-ups automatically","Invoices generated and reminders triggered autonomously","Smart scheduling -- clients book, AI handles conflicts","All client context in one place, AI-summarized","Context-aware reminders that know your priorities"].map((t) => (
+                  <li key={t} className="flex items-start gap-3 text-[#c8c9e0] text-sm"><span className="text-[#3bf5d4] mt-0.5 material-symbols-outlined text-base">add_circle</span>{t}</li>
                 ))}
-              </div>
+              </ul>
             </div>
           </div>
         </div>
       </section>
-      <section id="testimonials" className="py-20">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
-            <p className="text-[#004ac6] text-sm font-bold uppercase tracking-widest mb-3">Testimonials</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#131b2e]">Loved by solo operators</h2>
+      {/* FEATURES */}
+      <section id="solution" className="py-20 bg-[#0d0d1a]">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-14">
+            <p className="text-[#3b82f6] text-xs font-bold uppercase tracking-widest mb-3">The Solution</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Your AI Virtual COO -- Always On</h2>
+            <p className="text-[#6b6c80] max-w-xl mx-auto">SoloOps AI orchestrates your micro-operations autonomously, 24/7, without you lifting a finger.</p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((t) => (
-              <div key={t.name} className="p-8 bg-white/80 backdrop-blur-md border border-white/40 rounded-3xl shadow-md">
-                <p className="text-[#131b2e] italic mb-6 text-base leading-relaxed">"{t.quote}"</p>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-[#004ac6]/20 flex items-center justify-center text-[#004ac6] font-bold text-lg">{t.name.charAt(0)}</div>
-                  <div>
-                    <div className="font-bold text-[#131b2e]">{t.name}</div>
-                    <div className="text-sm text-[#434655]">{t.role}</div>
-                  </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
+            {[ {icon:"calendar_month",title:"Smart Scheduling",desc:"Clients book instantly. Auto time-zone detection. Reminders fire automatically.",badge:"3x more meetings"},
+              {icon:"forward_to_inbox",title:"Autonomous Follow-ups",desc:"AI crafts and sends personalized follow-ups at the perfect moment.",badge:"2x response rate"},
+              {icon:"description",title:"Instant Invoicing",desc:"Generate invoices in seconds. Auto-chase overdue payments.",badge:"60% faster payment"},
+              {icon:"forum",title:"Unified Client Comms",desc:"Email, WhatsApp, SMS in one thread. AI drafts replies. You approve.",badge:"Zero context switching"},
+              {icon:"task_alt",title:"Micro-Task Orchestration",desc:"Break big goals into actionable steps. AI tracks and nudges you.",badge:"95% task completion"},
+              {icon:"notifications_active",title:"Smart Reminders",desc:"Context-aware reminders that know your schedule, clients, and priorities.",badge:"Never miss anything"},
+              {icon:"analytics",title:"Revenue Insights",desc:"Track billable hours, project profit, and growth trends in one view.",badge:"Know your numbers"},
+              {icon:"cloud",title:"AI Summaries",desc:"Get instant AI summaries of client conversations and next-step recommendations.",badge:"Save 2 hrs/day"},
+            ].map((f) => (
+              <div key={f.title} className="glass rounded-xl p-6 feature-card hover:bg-white/[0.06]">
+                <span className="text-3xl mb-3 block material-symbols-outlined text-[#3b82f6]">{f.icon}</span>
+                <h4 className="text-lg font-bold mb-2 text-white">{f.title}</h4>
+                <p className="text-[#6b6c80] text-sm mb-4 leading-relaxed">{f.desc}</p>
+                <div className="inline-flex items-center gap-1.5 bg-[#3b82f6]/10 text-[#3b82f6] text-xs font-bold px-3 py-1.5 rounded-full">
+                  <span className="material-symbols-outlined text-sm">trending_up</span>
+                  {f.badge}
                 </div>
               </div>
             ))}
           </div>
         </div>
       </section>
-      <section id="pricing" className="py-20 bg-[#f2f3ff]/30">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="text-center mb-12">
-            <p className="text-[#004ac6] text-sm font-bold uppercase tracking-widest mb-3">Pricing</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-[#131b2e]">Simple plans. No surprises.</h2>
+
+      {/* HOW IT WORKS */}
+      <section id="how" className="py-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-14">
+            <p className="text-[#8b5cf6] text-xs font-bold uppercase tracking-widest mb-3">How It Works</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Up and running in 5 minutes</h2>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {plans.map((plan) => (
-              <div key={plan.name} className={"p-8 bg-white/80 backdrop-blur-md border border-white/40 rounded-3xl shadow-md flex flex-col " + (plan.featured ? "border-2 border-[#004ac6] scale-[1.02] relative z-10 shadow-xl" : "")}>
-                {plan.featured && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#004ac6] text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Recommended</div>
-                )}
-                <h3 className={"font-bold text-xl mb-2 " + (plan.featured ? "text-[#004ac6]" : "text-[#131b2e]")}>{plan.name}</h3>
-                <div className="mb-4">
-                  <span className="text-4xl font-extrabold text-[#131b2e]">{plan.price}</span>
-                  {plan.period && <span className="text-[#434655]">{plan.period}</span>}
+          <div className="grid md:grid-cols-3 gap-10">
+            {[ {num:"01",title:"Connect Your Tools",desc:"Link your calendar, email, WhatsApp, and Stripe in one click. No coding required.",icon:"link"},
+              {num:"02",title:"AI Learns Your Workflow",desc:"SoloOps analyzes how you work -- your clients, pricing, and availability -- and builds your ops system.",icon:"psychology"},
+              {num:"03",title:"Run on Auto-Pilot",desc:"Follow-ups send. Invoices go out. Reminders fire. You stay in control but stop doing the busywork.",icon:"rocket_launch"},
+            ].map((step) => (
+              <div key={step.num} className="text-center">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#3b82f6] to-[#8b5cf6] rounded-2xl mx-auto flex items-center justify-center mb-5 shadow-lg shadow-[#3b82f6]/20">
+                  <span className="text-2xl text-white material-symbols-outlined">{step.icon}</span>
                 </div>
-                <p className="text-[#434655] text-sm mb-6">{plan.desc}</p>
-                <ul className="space-y-2 mb-8 flex-grow">
-                  {plan.features.map((f) => (
-                    <li key={f} className="flex items-center gap-2 text-sm text-[#434655]">
-                      <span className="text-[#004ac6] material-symbols-outlined text-sm">done</span>{f}
-                    </li>
+                <div className="text-4xl font-black text-[#3b82f6]/20 mb-2">{step.num}</div>
+                <h4 className="text-xl font-bold text-white mb-2">{step.title}</h4>
+                <p className="text-[#6b6c80] text-sm leading-relaxed">{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* OXYGEN TEST */}
+      <section className="py-20 bg-[#0d0d1a]">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-14">
+            <p className="text-[#f59e0b] text-xs font-bold uppercase tracking-widest mb-3">The Oxygen Test</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">What collapses without AI?</h2>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            <div className="bg-[#0f1a0f] border border-[#22c55e]/20 rounded-2xl p-8">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-8 h-8 rounded-full bg-[#22c55e]/20 flex items-center justify-center"><span className="text-[#22c55e] text-sm material-symbols-outlined">check</span></div>
+                <h3 className="text-lg font-bold text-[#22c55e]">Without AI -- Still Works</h3>
+              </div>
+              <ul className="space-y-2">
+                {["Send emails manually","Manage appointments","Organize tasks","Track clients in a spreadsheet","Set reminders yourself"].map((t) => (
+                  <li key={t} className="flex items-center gap-2 text-[#6b6c80] text-sm"><span className="text-[#22c55e]">-</span> {t}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-[#1a0a0a] border border-[#ef4444]/20 rounded-2xl p-8">
+              <div className="flex items-center gap-3 mb-5">
+                <div className="w-8 h-8 rounded-full bg-[#ef4444]/20 flex items-center justify-center"><span className="text-[#ef4444] text-sm material-symbols-outlined">close</span></div>
+                <h3 className="text-lg font-bold text-[#ef4444]">Without AI -- What Collapses</h3>
+              </div>
+              <ul className="space-y-2">
+                {["Automated prioritization disappears","Workflow intelligence vanishes","Follow-ups slow to a crawl","Reminders become manual and inconsistent","Operational coordination fragments"].map((t) => (
+                  <li key={t} className="flex items-center gap-2 text-[#6b6c80] text-sm"><span className="text-[#ef4444]">-</span> {t}</li>
+                ))}
+              </ul>
+            </div>
+          </div>
+          <div className="text-center mt-8">
+            <p className="text-[#6b6c80] text-sm"><span className="text-[#f59e0b] font-bold">Verdict:</span> SoloOps AI is AI-first. Without AI, the experience becomes too slow and inefficient to scale.</p>
+          </div>
+        </div>
+      </section>
+      {/* PERCH NOTES */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <p className="text-[#8b5cf6] text-xs font-bold uppercase tracking-widest mb-3">PERCH Notes</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">Evidence, Risks and Assumptions</h2>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="bg-[#0d0d1a] border border-[#3b82f6]/20 rounded-2xl p-6">
+                <h4 className="text-white font-bold mb-3 flex items-center gap-2"><span className="text-[#3b82f6] text-lg">E</span> Evidence</h4>
+                <ul className="space-y-2">
+                  {["Solo businesses lose 20+ hrs/week on admin","Freelancer burnout rate is high","Rising demand for low-cost automation","AI adoption is accelerating rapidly"].map((t) => (
+                    <li key={t} className="text-[#6b6c80] text-sm flex items-start gap-2"><span className="text-[#3b82f6] mt-0.5">-</span> {t}</li>
                   ))}
                 </ul>
-                <button className={"w-full py-3 rounded-xl font-bold transition-all " + (plan.featured ? "bg-[#004ac6] text-white shadow-lg shadow-[#004ac6]/20 hover:scale-[1.02]" : "border border-[#004ac6] text-[#004ac6] hover:bg-[#004ac6]/5")}>
-                  {plan.cta}
-                </button>
               </div>
-            ))}
+              <div className="bg-[#0d0d1a] border border-[#f59e0b]/20 rounded-2xl p-6">
+                <h4 className="text-white font-bold mb-3 flex items-center gap-2"><span className="text-[#f59e0b] text-lg">R</span> Risks</h4>
+                <ul className="space-y-2">
+                  {["Users may not trust AI recommendations","Integrations may fail or be unreliable","Existing tools already solve part of the problem","AI-generated messages may feel impersonal"].map((t) => (
+                    <li key={t} className="text-[#6b6c80] text-sm flex items-start gap-2"><span className="text-[#f59e0b] mt-0.5">-</span> {t}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="bg-[#0d0d1a] border border-[#22c55e]/20 rounded-2xl p-6">
+                <h4 className="text-white font-bold mb-3 flex items-center gap-2"><span className="text-[#22c55e] text-lg">A</span> Assumptions</h4>
+                <ul className="space-y-2">
+                  {["Users will trust AI for routine ops","Simplicity beats feature count","Solo founders will pay for time savings","Automation is the key differentiator"].map((t) => (
+                    <li key={t} className="text-[#6b6c80] text-sm flex items-start gap-2"><span className="text-[#22c55e] mt-0.5">-</span> {t}</li>
+                  ))}
+                </ul>
+              </div>
+            </div>
           </div>
         </div>
       </section>
+
+      {/* PRICING */}
+      <section id="pricing" className="py-20 bg-[#0d0d1a]">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="text-center mb-14">
+            <p className="text-[#3b82f6] text-xs font-bold uppercase tracking-widest mb-3">Pricing</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-3">One plan. Everything you need.</h2>
+            <p className="text-[#6b6c80] max-w-lg mx-auto">Transparent pricing designed for solo operators. No hidden fees. No enterprise negotiation.</p>
+          </div>
+          <div className="max-w-md mx-auto glass rounded-3xl p-10 border border-white/10 glow-border">
+            <div className="text-center">
+              <p className="text-[#8b5cf6] text-xs font-bold uppercase tracking-widest mb-2">The Solo Plan</p>
+              <div className="flex items-baseline justify-center gap-1 mb-2">
+                <span className="text-5xl font-black text-white">29</span>
+                <span className="text-[#6b6c80]">/month</span>
+              </div>
+              <p className="text-[#6b6c80] text-sm mb-8">Billed monthly. Cancel anytime.</p>
+              <ul className="space-y-3 mb-8 text-left">
+                {["Unlimited clients and projects","AI-powered follow-up engine","Smart scheduling and reminders","Unified client inbox (email + WhatsApp)","Instant invoicing and payment tracking","Micro-task orchestration","Revenue insights dashboard","Priority support"].map((f) => (
+                  <li key={f} className="flex items-center gap-3 text-[#c8c9e0] text-sm"><span className="text-[#3bf5d4] material-symbols-outlined text-base">check_circle</span>{f}</li>
+                ))}
+              </ul>
+              <button className="w-full bg-gradient-to-r from-[#3b82f6] to-[#8b5cf6] text-white py-4 rounded-full font-bold shadow-xl shadow-[#3b82f6]/20 hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all">Start 14-Day Free Trial</button>
+              <p className="text-[#6b6c80] text-xs mt-4">No credit card required</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
       <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="bg-gradient-to-br from-[#004ac6] via-[#2563eb] to-[#00569c] rounded-[2.5rem] p-10 md:p-14 text-center text-white shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="bg-gradient-to-br from-[#1a1040] via-[#0d0d2a] to-[#0a1520] rounded-[2.5rem] p-10 md:p-14 text-center glass border border-white/5 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-[#3b82f6]/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"/>
             <div className="relative z-10">
               <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Ready to reclaim your time?</h2>
-              <p className="text-white/80 text-lg max-w-2xl mx-auto mb-10">Join thousands of solo operators who stopped drowning in operational work and started focusing on what only they can do.</p>
+              <p className="text-[#6b6c80] text-lg max-w-2xl mx-auto mb-10">The interactive prototype is coming next -- a live demo where you can see SoloOps AI handling real tasks in real time.</p>
               <div className="flex flex-col sm:flex-row justify-center gap-4">
-                <button className="bg-white text-[#004ac6] px-10 py-4 rounded-full font-bold shadow-xl hover:bg-[#dbe1ff] transition-all">Start 14-Day Free Trial</button>
-                <button className="bg-white/10 backdrop-blur-md border border-white/20 px-10 py-4 rounded-full font-bold hover:bg-white/20 transition-all">Talk to Sales</button>
+                <button className="bg-gradient-to-r from-[#3b82f6] to-[#8b5cf6] text-white px-10 py-4 rounded-full font-bold shadow-xl hover:shadow-2xl hover:scale-[1.02] transition-all">Deploy Your Agent</button>
+                <button className="glass border border-white/10 text-[#e8e9f0] px-10 py-4 rounded-full font-bold hover:bg-white/5 transition-all">View Prototype Roadmap</button>
               </div>
             </div>
           </div>
         </div>
       </section>
-      <footer className="bg-white border-t border-[#c3c6d7]/20 py-16">
-        <div className="max-w-7xl mx-auto px-4 md:px-6">
-          <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-12">
-            <div className="max-w-sm">
-              <div className="flex items-center gap-2 mb-4">
-                <span className="text-3xl text-[#004ac6] material-symbols-outlined">blur_on</span>
-                <span className="text-2xl font-extrabold text-[#004ac6]">SoloFlow AI</span>
-              </div>
-              <p className="text-[#434655] text-sm leading-relaxed">The all-in-one AI assistant for solo entrepreneurs. Automate the chaos. Reclaim your time.</p>
+
+      {/* FOOTER */}
+      <footer className="border-t border-white/5 py-12">
+        <div className="max-w-7xl mx-auto px-4 md:px-8">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
+            <div className="flex items-center gap-2">
+              <span className="text-xl text-[#3b82f6] material-symbols-outlined">blur_on</span>
+              <span className="text-lg font-extrabold text-white">SoloOps <span className="text-[#8b5cf6]">AI</span></span>
             </div>
-            <div className="grid grid-cols-3 gap-12">
-              {[
-                { title: "Product", links: ["Features", "Pricing", "Integrations"] },
-                { title: "Resources", links: ["Documentation", "Blog", "FAQ"] },
-                { title: "Company", links: ["Privacy", "Terms", "Contact"] },
-              ].map((col) => (
-                <div key={col.title}>
-                  <h4 className="font-bold mb-4 text-[#131b2e]">{col.title}</h4>
-                  <ul className="space-y-2">
-                    {col.links.map((l) => (
-                      <li key={l}><a className="text-[#434655] text-sm hover:text-[#004ac6] transition-colors" href="#">{l}</a></li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+            <div className="flex items-center gap-8 text-sm text-[#6b6c80]">
+              <a className="hover:text-white transition-colors" href="#problem">Problem</a>
+              <a className="hover:text-white transition-colors" href="#solution">Solution</a>
+              <a className="hover:text-white transition-colors" href="#pricing">Pricing</a>
             </div>
-          </div>
-          <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-[#c3c6d7]/10 gap-4">
-            <p className="text-[#434655] text-sm">(c) 2024 SoloFlow AI. Built for the solo operator.</p>
+            <p className="text-[#6b6c80] text-xs">(c) 2024 SoloOps AI. Built for the solo operator.</p>
           </div>
         </div>
       </footer>
+
     </div>
   );
 }

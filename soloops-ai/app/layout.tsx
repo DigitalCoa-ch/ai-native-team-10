@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SoloOps AI — Micro-Operations Agent",
+  title: "SoloOps AI -- Micro-Operations Agent — Micro-Operations Agent",
   description: "AI-powered micro-operations agent for solo businesses. Smart tasks, follow-ups, and AI insights.",
 };
 
